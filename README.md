@@ -1,27 +1,25 @@
-# ClientKeeperApp2
+Clients Keeper App
+=
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
+This is a simple clients keeper app. It is one of the project from Udemy course, Projects in ExpressJS - Learn ExpressJS building 10 projects. It is a MEAN stack development (Mongo-Express-Angular5-Node). 
 
-## Development server
+What can be learnt from the course
+- Backend REST API
+- MongoJS ORM/ODM
+- Angular 2 Frontend
+- Components, Services, HTTP Module
+- Separate Frontend / Backend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+What I have done when going through the course
+- Combined frontend and backend components in the same project folder.
+- Modified script to build Angular files and start Node server in a single command.
+- Use Angular Material for the UI layout (mat-table, mat-pagination, matSort).
+- Use Angular 5 latest feature, HttpClient.
+- Use Reactive Form technique to create form in Angular.
+- Customise filter function to search for filter value in all document fields in mongodb. Not able to use Text Search feature in mongodb to filter the document.
+- Extend datasource to customise the data source for pagination
+- Implement callback in filterClient function in NodeJS to achieve DRY.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+How to run
+- At terminal (mac), $ npm run build
+ 

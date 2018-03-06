@@ -1,0 +1,46 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+}
+
+.client-form {
+  min-width: 150px;
+  // max-width: 500px;
+  width: 100%;
+
+  .client-form-add {
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #E8F0FF;
+    border-radius: 8px;
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+.filter-container {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.add-client-button {
+  float: right;
+  margin-top: 10px;
+}

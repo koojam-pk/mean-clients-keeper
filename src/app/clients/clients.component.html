@@ -1,0 +1,89 @@
+<section class="client-form">
+  <div *ngIf="isEdit && !isAdd">
+    <form [formGroup]="clientFormControl" class="client-form-add" (ngSubmit)="onUpdateClient()">
+        <h3>Edit Client</h3>
+        <mat-form-field>
+          <input matInput placeholder="First Name" type="text" formControlName="first_name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Last Name" type="text" formControlName="last_name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Email" type="email" formControlName="email">
+          <mat-error *ngIf="!clientFormControl.get('email').valid && clientFormControl.get('email').touched">{{getEmailErrorMsg()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Phone" type="number" formControlName="phone">
+        </mat-form-field>
+        <button mat-button color="primary" type="submit">Update</button>
+        <button mat-button color="secondary" type="button" (click)="onEditCancel()">Cancel</button>
+      </form>
+  </div>
+  <div *ngIf="!isEdit && isAdd">
+    <form [formGroup]="clientFormControl" class="client-form-add" (ngSubmit)="onSaveClient()">
+      <h3>Add Client</h3>
+      <mat-form-field>
+        <input matInput placeholder="First Name" type="text" formControlName="first_name" [(ngModel)]="first_name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" type="text" formControlName="last_name" [(ngModel)]="last_name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" type="email" formControlName="email" [(ngModel)]="email">
+        <mat-error *ngIf="!clientFormControl.get('email').valid && clientFormControl.get('email').touched">{{getEmailErrorMsg()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone" type="number" formControlName="phone" [(ngModel)]="phone">
+      </mat-form-field>
+      <button mat-button color="primary" type="submit">Save</button>
+      <button mat-button color="secondary" type="button" (click)="onAddCancel()">Cancel</button>
+    </form>
+  </div>
+</section>
+<div class="filter-container">
+  <mat-form-field>
+    <input matInput placeholder="Filter"  #filter>
+  </mat-form-field>
+  <button mat-mini-fab color="primary" class="add-client-button" type="button" (click)="onAddClient()"
+    *ngIf="!isAdd">+</button>
+</div>
+<div class="table-container">
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="first_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.first_name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="last_name">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.last_name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> E-Mail </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header> Phone </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="onEdit(row)">
+          <mat-icon aria-label="edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(row._id)" color="warn">
+          <mat-icon aria-label="delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator
+                [length]="clientsCount"
+                [pageSize]="3"
+                [pageSizeOptions]="[3, 5, 10]"
+                [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>
